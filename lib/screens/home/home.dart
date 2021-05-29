@@ -13,58 +13,102 @@ class _HomePageState extends State<HomePage> {
         title: Text("Home"),
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            children: [
-              Container(
-                child: InkWell(
-                    child: Card(
-                      child: Placeholder(
-                        fallbackWidth: MediaQuery.of(context).size.width * 0.48,
-                        fallbackHeight: MediaQuery.of(context).size.width * 0.5,
+      body: ListView(children: [
+        Column(
+          children: <Widget>[
+            Row(
+              children: [
+                Container(
+                  child: InkWell(
+                      child: Card(
+                        child: Image.asset(
+                          "assets/first/horse.jpg",
+                          width: MediaQuery.of(context).size.width * 0.48,
+                          height: MediaQuery.of(context).size.width * 0.5,
+                        ),
                       ),
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/firstgame');
-                    }),
-              ),
-              Container(
-                child: InkWell(
-                    child: Card(
-                      child: Placeholder(
-                        fallbackWidth: MediaQuery.of(context).size.width * 0.48,
-                        fallbackHeight: MediaQuery.of(context).size.width * 0.5,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/firstgame');
+                      }),
+                ),
+                Container(
+                  child: InkWell(
+                      child: Card(
+                        child: Image.asset(
+                          "assets/first/horse.jpg",
+                          width: MediaQuery.of(context).size.width * 0.48,
+                          height: MediaQuery.of(context).size.width * 0.5,
+                        ),
                       ),
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/secondgame');
-                    }),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                child: Card(
-                  child: Placeholder(
-                    fallbackWidth: MediaQuery.of(context).size.width * 0.48,
-                    fallbackHeight: MediaQuery.of(context).size.width * 0.5,
-                  ),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/secondgame');
+                      }),
                 ),
-              ),
-              Container(
-                child: Card(
-                  child: Placeholder(
-                    fallbackWidth: MediaQuery.of(context).size.width * 0.48,
-                    fallbackHeight: MediaQuery.of(context).size.width * 0.5,
-                  ),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  child: InkWell(
+                      child: Card(
+                        child: Image.asset(
+                          "assets/first/horse.jpg",
+                          width: MediaQuery.of(context).size.width * 0.48,
+                          height: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/thirdgame');
+                      }),
                 ),
-              ),
-            ],
-          ),
-        ],
-      ),
+                Container(
+                  child: InkWell(
+                      child: Card(
+                        child: Image.asset(
+                          "assets/first/horse.jpg",
+                          width: MediaQuery.of(context).size.width * 0.48,
+                          height: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/fourthgame');
+                      }),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  child: InkWell(
+                      child: Card(
+                        child: Image.asset(
+                          "assets/first/horse.jpg",
+                          width: MediaQuery.of(context).size.width * 0.48,
+                          height: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/fifthgame');
+                      }),
+                ),
+                Container(
+                  child: InkWell(
+                      child: Card(
+                        child: Image.asset(
+                          "assets/first/horse.jpg",
+                          width: MediaQuery.of(context).size.width * 0.48,
+                          height: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/results');
+                      }),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ]),
     );
   }
 }

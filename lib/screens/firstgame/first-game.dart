@@ -23,12 +23,6 @@ class _FirstGameState extends State<FirstGame> {
   Color threeCardColor = Colors.white;
   Color fourCardColor = Colors.white;
 
-  // Map<int, String> assetMap = {
-  //   1: "assets/first/horse.jpg",
-  //   2: "assets/first/dog.jpg",
-  //   3: "assets/first/cat.jpg",
-  //   4: "assets/first/cow.jpg"
-  // };
   Map<int, String> assetMap = {
     cards[0].id: cards[0].image,
     cards[1].id: cards[1].image,
@@ -156,7 +150,6 @@ class _FirstGameState extends State<FirstGame> {
     }
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
           title: Text('FirstPlay'),
         ),
         body: Column(children: [
@@ -210,7 +203,7 @@ class _FirstGameState extends State<FirstGame> {
           ),
           Container(
               child: ElevatedButton(
-            child: Text("The button"),
+            child: Text("Проверить"),
             onPressed: (buttonActivation && (rand + 1 == activeCard))
                 ? () {
                     createRightAlertDialog(context);
