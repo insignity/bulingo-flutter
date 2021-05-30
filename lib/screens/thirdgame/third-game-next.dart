@@ -7,23 +7,23 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    const ThirdGame(),
+    const ThirdGameNext(),
   );
 }
 
-class ThirdGame extends StatefulWidget {
+class ThirdGameNext extends StatefulWidget {
   // ignore: use_key_in_widget_constructors
-  const ThirdGame({this.title = 'ThirdGame'});
+  const ThirdGameNext({this.title = 'ThirdGame'});
 
   final String title;
 
   @override
   State<StatefulWidget> createState() {
-    return _ThirdGameState();
+    return _ThirdGameNextState();
   }
 }
 
-class _ThirdGameState extends State<ThirdGame> {
+class _ThirdGameNextState extends State<ThirdGameNext> {
   TargetPlatform? _platform;
   late VideoPlayerController _videoPlayerControllerCow;
   ChewieAudioController? _chewieAudioController;
@@ -70,7 +70,7 @@ class _ThirdGameState extends State<ThirdGame> {
 
   Future<void> initializePlayer() async {
     _videoPlayerControllerCow =
-        VideoPlayerController.asset('assets/sounds/cow.mp3');
+        VideoPlayerController.asset('assets/sounds/cat.mp3');
     await Future.wait([_videoPlayerControllerCow.initialize()]);
     _chewieAudioController = ChewieAudioController(
       videoPlayerController: _videoPlayerControllerCow,
@@ -143,10 +143,10 @@ class _ThirdGameState extends State<ThirdGame> {
               child: ElevatedButton(
                 onPressed: () {
                   print(_textEditingController?.text);
-                  if (_textEditingController?.text == "ынах") {
+                  if (_textEditingController?.text == "куоска") {
                     showRightAlertDialog(context);
-                    Future.delayed(const Duration(seconds: 2), () {
-                      Navigator.pushNamed(context, '/thirdgamenext');
+                    Future.delayed(const Duration(seconds: 4), () {
+                      Navigator.pushNamed(context, '/home');
                     });
                   } else {
                     createWrongAlertDialog(context);

@@ -2,6 +2,7 @@ import 'package:bulingo/screens/fifthgame/fifthgame.dart';
 import 'package:bulingo/screens/fourthgame/fourthgame.dart';
 import 'package:bulingo/screens/results/results.dart';
 import 'package:bulingo/screens/secondgame/second-game.dart';
+import 'package:bulingo/screens/thirdgame/third-game-next.dart';
 import 'package:bulingo/screens/thirdgame/third-game.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
             '/fourthgame': (BuildContext context) => FourthGame(),
             '/fifthgame': (BuildContext context) => FifthGame(),
             '/results': (BuildContext context) => Results(),
+            '/thirdgamenext': (BuildContext context) => ThirdGameNext(),
           },
           home: HomePage(),
         ));

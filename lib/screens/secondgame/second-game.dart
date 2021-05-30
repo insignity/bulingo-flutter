@@ -1,5 +1,8 @@
+import 'package:bulingo/entity/score.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:provider/provider.dart';
 
 class SecondGame extends StatefulWidget {
   @override
@@ -14,7 +17,8 @@ class _SecondGameState extends State<SecondGame> {
   bool moved1 = false;
   bool moved2 = false;
   bool moved3 = false;
-  createWrongAlertDialog(BuildContext context) {
+
+  showWrongAlertDialog(BuildContext context) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -28,13 +32,58 @@ class _SecondGameState extends State<SecondGame> {
         });
   }
 
+  showRightAlertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Center(child: Text("Правильно! :)")),
+            content: Text(
+              "Продолжайте в том духе!",
+              textAlign: TextAlign.center,
+            ),
+          );
+        });
+  }
+
+  showResultAlertDialog(BuildContext context, int result) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Center(child: Text("ВСЁ!")),
+            content: Text(
+              "Вы сделали правильно $result из 3 заданий!",
+              textAlign: TextAlign.center,
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
+    Score score = context.watch<Score>();
+    int game = score.currentGame;
+    List<String> sentence = ["Привет, как дела?", "Меня зовут", "Я тебя люблю"];
+    List<String> word1 = ['Hi', 'My', 'I'];
+    List<String> word2 = ['how', 'name', 'love'];
+    List<String> word3 = ['you', 'is', 'you'];
     return Scaffold(
       appBar: AppBar(title: Text("Составьте предложение")),
       body: ListView(
         children: [
-          header,
+          Container(
+            height: 150,
+            padding: EdgeInsets.only(top: 50),
+            child: Center(
+                child: Text(
+              "Составьте предложение: ${sentence[game]}",
+              style: TextStyle(
+                fontSize: 30,
+              ),
+              textAlign: TextAlign.center,
+            )),
+          ),
           Container(
             width: double.infinity,
             height: 400,
@@ -100,7 +149,7 @@ class _SecondGameState extends State<SecondGame> {
                               break;
                           }
                         },
-                        child: Text("Hi"),
+                        child: Text("${word1[game]}"),
                       ),
                     ),
                   ),
@@ -164,7 +213,7 @@ class _SecondGameState extends State<SecondGame> {
                               break;
                           }
                         },
-                        child: Text("how"),
+                        child: Text("${word2[game]}"),
                       ),
                     ),
                   ),
@@ -228,7 +277,7 @@ class _SecondGameState extends State<SecondGame> {
                               break;
                           }
                         },
-                        child: Text("you"),
+                        child: Text("${word3[game]}"),
                       ),
                     ),
                   ),
@@ -244,9 +293,20 @@ class _SecondGameState extends State<SecondGame> {
                 if ((offset1 == Offset(0, -200)) &&
                     (offset2 == Offset(0, -200)) &&
                     (offset3 == Offset(0, -200))) {
-                  Navigator.pushNamed(context, '/home');
+                  if (score.currentGame == 2) {
+                    showResultAlertDialog(context, 2);
+                    Future.delayed(const Duration(seconds: 4), () {
+                      Navigator.pushNamed(context, '/home');
+                    });
+                  } else {
+                    showRightAlertDialog(context);
+                    Future.delayed(const Duration(seconds: 1), () {
+                      Navigator.pushNamed(context, '/secondgame');
+                    });
+                    score.addCurrentGame();
+                  }
                 } else {
-                  createWrongAlertDialog(context);
+                  showWrongAlertDialog(context);
                 }
               },
               child: Text(
